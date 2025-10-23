@@ -148,6 +148,10 @@ export async function setupBranch(
       `Successfully created and checked out local branch: ${newBranch}`,
     );
 
+    console.log(`Pushing branch ${newBranch} to remote...`);
+    await $`git push -u origin ${newBranch}`;
+    console.log(`Successfully pushed branch to remote`);
+
     // Set outputs for GitHub Actions
     core.setOutput("CLAUDE_BRANCH", newBranch);
     core.setOutput("BASE_BRANCH", sourceBranch);
